@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPTIMUS FITNESS | Premium Full-Stack Gym Management</title>
+  <meta name="description" content="Welcome to Optimus Fitness. Unmatched training facility, certified professional instructors, flexible memberships, and state-of-the-art progress tracking.">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       HEADER & NAVIGATION
+       ========================================================================= -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#home" class="logo" id="logo-nav">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9 10h-2V8h2v8zm5 0h-2V8h2v8zm-10 0H5V8h2v8z"/>
+        </svg>
+        <span>OPTIMUS</span> FIT
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-anchor active" data-target="home">Home</a></li>
+        <li><a href="#classes" class="nav-anchor" data-target="classes">Classes</a></li>
+        <li><a href="#trainers" class="nav-anchor" data-target="trainers">Trainers</a></li>
+        <li><a href="#calculator" class="nav-anchor" data-target="calculator">Bio-Calc</a></li>
+        <li><a href="#diet" class="nav-anchor" data-target="diet">Diet Plan</a></li>
+        <li><a href="#plans" class="nav-anchor" data-target="plans">Plans</a></li>
+        <li class="member-only" style="display: none;"><a href="#dashboard" class="nav-anchor" data-target="dashboard">Dashboard</a></li>
+        <li class="admin-only" style="display: none;"><a href="#admin" class="nav-anchor" data-target="admin">Admin</a></li>
+        <li><a href="#contact" class="nav-anchor" data-target="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <span id="nav-user-greeting" style="display: none; font-size: 0.9rem; font-weight: 500;"></span>
+        <button id="nav-auth-btn" class="btn btn-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          Member Login
+        </button>
+        <button id="nav-logout-btn" class="btn btn-outline" style="display: none;">
+          Log Out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN SPA SHELL
+       ========================================================================= -->
+  <main>
+    
+    <!-- =========================================================================
+         HOME / HERO SECTION
+         ========================================================================= -->
+    <section id="home-view" class="hero page-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1 class="text-gradient">Forge Your <br>Ultimate Body</h1>
+          <p>Optimus Fitness combines top-tier biomechanical equipment, expert athletic coaches, and sophisticated physical tracking systems to construct the ultimate arena for physical transformation.</p>
+          <div class="hero-actions" style="display: flex; gap: 1.25rem;">
+            <a href="#plans" class="btn btn-primary" id="hero-cta-btn">Begin Journey</a>
+            <a href="#classes" class="btn btn-outline">Browse Schedules</a>
+          </div>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>4+</h3>
+              <p>Locations</p>
+            </div>
+            <div class="stat-item">
+              <h3>25+</h3>
+              <p>Certified Coaches</p>
+            </div>
+            <div class="stat-item">
+              <h3>2,500+</h3>
+              <p>Members</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-glowing-ring-inner"></div>
+          <div class="visual-glowing-ring"></div>
+          <div class="hero-badge-card">
+            <div class="badge-header">
+              <div style="background-color: var(--accent-gold); width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 0 8px var(--accent-gold);"></div>
+              <div>
+                <h4 style="margin: 0; color: #fff;">Optimus Gym Tracker</h4>
+                <p style="margin: 0; font-size: 0.7rem; color: var(--text-secondary);">Real-Time Bio-Analytics</p>
+              </div>
+            </div>
+            <div class="badge-metric" style="margin-top: 1rem;">
+              <span>ACTIVE NOW</span>
+              <div style="font-size: 2.2rem; font-weight: 900; line-height: 1.2; margin-top: 0.25rem;" id="live-gym-occupancy">147</div>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">Optimized training capacity: 74%</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           OPTIMUS PHYSICAL ARCHITECTURAL ZONES (HOME SHOWCASE)
+           ========================================================================= -->
+      <div class="facility-showcase container" style="margin-top: 6rem; border-top: 1px solid var(--border-color); padding-top: 5rem; margin-bottom: 3rem;">
+        <div class="section-header" style="margin-bottom: 4rem;">
+          <h2 style="font-size: 2.5rem; font-weight: 900; text-transform: uppercase;">Optimus Architectural Zones</h2>
+          <p>Explore our premium specialized training zones engineered for maximal biomechanical performance, dynamic conditioning, and high-speed physiological restoration.</p>
+        </div>
+
+        <div class="facility-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+          <!-- Facility Zone 1: Kinetic Strength -->
+          <div class="facility-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+            <div class="facility-img-container" style="height: 240px; overflow: hidden; position: relative;">
+              <img src="strength_zone.png" alt="Kinetic Strength Zone" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-spring);">
+              <div style="position: absolute; bottom: 15px; left: 15px; background: var(--accent-gold); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Zone 01</div>
+            </div>
+            <div style="padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+              <div>
+                <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; color: #fff;">Kinetic Strength Zone</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Engineered for maximal neural output and structural weight loading. Featuring carbon-fiber lifting pods, biomechanical barbell cages, and professional calibrated iron.</p>
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
+                <li style="display: flex; justify-content: space-between;"><span>Equipment Standard:</span> <strong style="color: #fff;">Eleiko & Rogue Caliber</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span>Capacity limit:</span> <strong style="color: #fff;">18 Athletes Max</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span>Audit Platform:</span> <strong style="color: #fff;">Optimus Motion Cam</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Facility Zone 2: Cardio Arena -->
+          <div class="facility-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+            <div class="facility-img-container" style="height: 240px; overflow: hidden; position: relative;">
+              <img src="cardio_zone.png" alt="Cardiovascular Bio-Zone" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-spring);">
+              <div style="position: absolute; bottom: 15px; left: 15px; background: var(--accent-gold); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Zone 02</div>
+            </div>
+            <div style="padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+              <div>
+                <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; color: #fff;">Cardiovascular Bio-Zone</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Futuristic aerobic performance center. Sleek trainers paired with interactive live bio-metric feedback monitors tracking heart rate thresholds, VO2 max metrics, and metabolic efficiency.</p>
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
+                <li style="display: flex; justify-content: space-between;"><span>Interface system:</span> <strong style="color: #fff;">Bio-Link Live Screens</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span>Tracking telemetry:</span> <strong style="color: #fff;">HR, SpO2, HRV Core</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span>Trainers quantity:</span> <strong style="color: #fff;">24 Woodway Pods</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Facility Zone 3: Recovery Suite -->
+          <div class="facility-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+            <div class="facility-img-container" style="height: 240px; overflow: hidden; position: relative;">
+              <img src="recovery_zone.png" alt="Hydro & Thermal Suite" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-spring);">
+              <div style="position: absolute; bottom: 15px; left: 15px; background: var(--accent-gold); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Zone 03</div>
+            </div>
+            <div style="padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+              <div>
+                <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; color: #fff;">Hydro & Thermal Recovery</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Biomechanical restoration chamber. Premium hot cedar saunas, custom ergonomic cold cryo-plunges, and pressurized compression booths to accelerate muscular recovery.</p>
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; font-size: 0.85rem; color: var(--text-secondary);">
+                <li style="display: flex; justify-content: space-between;"><span>Sauna range:</span> <strong style="color: #fff;">85°C - 95°C Infrared</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span>Cold plunge range:</span> <strong style="color: #fff;">3°C - 5°C Active Chill</strong></li>
+                <li style="display: flex; justify-content: space-between;"><span>VIP access:</span> <strong style="color: #fff;">Unlimited 24/7</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           OPTIMUS MEMORIES & EVENTS SHOWCASE
+           ========================================================================= -->
+      <div class="memories-events-section container" style="margin-top: 6rem; border-top: 1px solid var(--border-color); padding-top: 5rem; margin-bottom: 5rem;">
+        <div class="memories-events-grid">
+          
+          <!-- Column 1: Live & Upcoming Gym Events -->
+          <div>
+            <div class="section-header" style="margin-bottom: 3rem;">
+              <h2 style="font-size: 2.2rem; font-weight: 900; text-transform: uppercase;">Upcoming Athletic Events</h2>
+              <p>Optimus is more than a facility; it is a high-performance community. Engage in our upcoming competitive platforms, interactive seminars, and physiological workshops.</p>
+            </div>
+
+            <div class="events-deck" style="display: flex; flex-direction: column; gap: 2rem;">
+              
+              <!-- Event 1: Powerlifting Classic -->
+              <div class="event-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; gap: 1.5rem; transition: var(--transition-spring); position: relative; overflow: hidden; cursor: pointer;">
+                <div class="event-date-badge" style="width: 70px; height: 70px; border-radius: 10px; background: rgba(245,158,11,0.08); border: 1px dashed rgba(245,158,11,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-heading);">
+                  <span style="font-size: 1.5rem; font-weight: 900; color: var(--accent-gold); line-height: 1.1;">18</span>
+                  <span style="font-size: 0.65rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-top: -0.1rem;">Jun</span>
+                </div>
+                <div style="flex-grow: 1;">
+                  <span style="font-size: 0.7rem; font-weight: 800; background: rgba(245,158,11,0.1); color: var(--accent-gold); padding: 0.2rem 0.6rem; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; margin-bottom: 0.75rem;">Championship Plat</span>
+                  <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Optimus Summer Powerlifting Classic</h3>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">Test your absolute physical capacity. Calibrated Eleiko barbell stations, three attempt platform rules, and CSCS-certified referees auditing depth and locks. Open for all divisions.</p>
+                  <div style="display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.03); padding-top: 0.75rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                    <span>📍 Main Lifting Pods</span>
+                    <span>⏰ 09:00 AM - 05:00 PM</span>
+                    <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem; border-color: var(--accent-gold); color: var(--accent-gold);" onclick="window.openAuthModal('login'); event.stopPropagation();">Register Seat</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event 2: High Velocity Conditioning -->
+              <div class="event-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; gap: 1.5rem; transition: var(--transition-spring); position: relative; overflow: hidden; cursor: pointer;">
+                <div class="event-date-badge" style="width: 70px; height: 70px; border-radius: 10px; background: rgba(16,185,129,0.08); border: 1px dashed rgba(16,185,129,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-heading);">
+                  <span style="font-size: 1.5rem; font-weight: 900; color: var(--success); line-height: 1.1;">04</span>
+                  <span style="font-size: 0.65rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-top: -0.1rem;">Jul</span>
+                </div>
+                <div style="flex-grow: 1;">
+                  <span style="font-size: 0.7rem; font-weight: 800; background: rgba(16,185,129,0.1); color: var(--success); padding: 0.2rem 0.6rem; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; margin-bottom: 0.75rem;">Community Marathon</span>
+                  <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Metabolic VO2 Cardio Marathon</h3>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">Engage cardiorespiratory thresholds in our 90-minute metabolic group flow. Incorporates Woodway curve runs, high-velocity kettlebell drills, and live bio-metric target zones monitoring.</p>
+                  <div style="display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.03); padding-top: 0.75rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                    <span>📍 Zone 02 Cardio Arena</span>
+                    <span>⏰ 08:30 AM - 10:00 AM</span>
+                    <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem; border-color: var(--success); color: var(--success);" onclick="window.openAuthModal('login'); event.stopPropagation();">Register Seat</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event 3: Mobility Seminar -->
+              <div class="event-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; gap: 1.5rem; transition: var(--transition-spring); position: relative; overflow: hidden; cursor: pointer;">
+                <div class="event-date-badge" style="width: 70px; height: 70px; border-radius: 10px; background: rgba(239,68,68,0.08); border: 1px dashed rgba(239,68,68,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-heading);">
+                  <span style="font-size: 1.5rem; font-weight: 900; color: var(--error); line-height: 1.1;">22</span>
+                  <span style="font-size: 0.65rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-top: -0.1rem;">Jul</span>
+                </div>
+                <div style="flex-grow: 1;">
+                  <span style="font-size: 0.7rem; font-weight: 800; background: rgba(239,68,68,0.1); color: var(--error); padding: 0.2rem 0.6rem; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; margin-bottom: 0.75rem;">Educational Sem</span>
+                  <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Biomechanical & Joint Recovery Seminar</h3>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">Hosted by expert Elena Rose. Explore advanced myofascial releasing techniques, structural posture resets, and recovery suites hot-cold timing protocols to accelerate muscular restoration.</p>
+                  <div style="display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.03); padding-top: 0.75rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                    <span>📍 Zen Studio Suite</span>
+                    <span>⏰ 02:00 PM - 04:00 PM</span>
+                    <button class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.75rem; border-color: var(--error); color: var(--error);" onclick="window.openAuthModal('login'); event.stopPropagation();">Register Seat</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Column 2: Live Gym Memories Gallery -->
+          <div>
+            <div class="section-header" style="margin-bottom: 3rem;">
+              <h2 style="font-size: 2.2rem; font-weight: 900; text-transform: uppercase;">Community Memories</h2>
+              <p>Inspect our shared fitness transformations, record-breaking lifts, and collaborative training milestones that represent the heart of Optimus Fitness.</p>
+            </div>
+
+            <div class="gallery-wrapper" style="display: flex; flex-direction: column; gap: 2.5rem;">
+              
+              <!-- Memory Card 1 -->
+              <div class="memory-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+                <div class="memory-img-container" style="height: 250px; overflow: hidden; position: relative;">
+                  <img src="gym_event.png" alt="Optimus Lift Off Champions" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-spring);">
+                  <div style="position: absolute; bottom: 15px; left: 15px; background: var(--accent-gold); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Championship</div>
+                </div>
+                <div style="padding: 1.5rem;">
+                  <h3 style="font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Optimus Summer Liftoff Champions</h3>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Optimus athletes celebrating record-breaking achievements, personal bests, and supportive team bonds during the Summer Lifting Classic. Over 1,200 kg moved collectively!</p>
+                </div>
+              </div>
+
+              <!-- Memory Card 2 -->
+              <div class="memory-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+                <div class="memory-img-container" style="height: 250px; overflow: hidden; position: relative;">
+                  <img src="gym_seminar.png" alt="Biomechanical Workshop Flow" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-spring);">
+                  <div style="position: absolute; bottom: 15px; left: 15px; background: var(--success); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Seminar</div>
+                </div>
+                <div style="padding: 1.5rem;">
+                  <h3 style="font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">Biomechanical & Joint Recovery Workshop</h3>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">Our active community participating in posture auditing and active restore flows. Exploring recovery timelines and joint angles to unlock high-speed performance margins.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CLASSES SECTION
+         ========================================================================= -->
+    <section id="classes-view" class="section-padding page-section" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Elite Programs</h2>
+          <p>Filter and book our high-performance workouts guided by elite athletic trainers.</p>
+        </div>
+
+        <div class="classes-filter">
+          <button class="filter-btn active" data-filter="all">All Disciplines</button>
+          <button class="filter-btn" data-filter="High">High Intensity</button>
+          <button class="filter-btn" data-filter="Medium">Athletic Strength</button>
+          <button class="filter-btn" data-filter="Low">Mindfulness & Yoga</button>
+        </div>
+
+        <div class="classes-grid" id="classes-cards-container">
+          <!-- Class cards loaded dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         MEMBERSHIP PLANS SECTION
+         ========================================================================= -->
+    <section id="plans-view" class="section-padding page-section" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Membership Tiers</h2>
+          <p>Uncompromising access models tailored to your long-term fitness ambitions.</p>
+        </div>
+
+        <div class="pricing-toggle">
+          <span class="toggle-label active" id="label-monthly">Monthly Billing</span>
+          <label class="switch">
+            <input type="checkbox" id="pricing-toggle-checkbox">
+            <span class="slider-switch"></span>
+          </label>
+          <span class="toggle-label" id="label-yearly">Yearly (Save 20%)</span>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Basic Plan -->
+          <div class="price-card">
+            <h3>BASIC STRENGTH</h3>
+            <p class="tier-desc">Ideal for self-directed athletes requiring core training infrastructure.</p>
+            <div class="price-val">
+              <span class="amount" id="basic-price">$29</span>
+              <span class="period" id="basic-period">/ month</span>
+            </div>
+            <ul class="price-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Full Access to Strength & Cardio Zones
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Locker Rooms & Shower Suite Access
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Optimus Mobile Gym QR Entry Pass
+              </li>
+              <li style="text-decoration: line-through; opacity: 0.4;">
+                Advanced Dynamic Class Booking
+              </li>
+              <li style="text-decoration: line-through; opacity: 0.4;">
+                1-on-1 Personal Master Coach Consultation
+              </li>
+            </ul>
+            <button class="btn btn-outline purchase-membership-btn" data-tier="Basic">Select Basic</button>
+          </div>
+
+          <!-- Elite Plan -->
+          <div class="price-card featured">
+            <span class="price-tag">Most Popular</span>
+            <h3>ELITE ATHLETE</h3>
+            <p class="tier-desc">Designed for active athletes demanding class integration and tracking.</p>
+            <div class="price-val">
+              <span class="amount" id="elite-price">$59</span>
+              <span class="period" id="elite-period">/ month</span>
+            </div>
+            <ul class="price-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                All Basic Strengths Tier Privileges
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited Gym Class Bookings
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Workout Dashboard Progress Logging
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Guest Passes (2 per month)
+              </li>
+              <li style="text-decoration: line-through; opacity: 0.4;">
+                1-on-1 Personal Master Coach Consultation
+              </li>
+            </ul>
+            <button class="btn btn-primary purchase-membership-btn" data-tier="Elite">Select Elite</button>
+          </div>
+
+          <!-- VIP Plan -->
+          <div class="price-card">
+            <h3>VIP OLYMPIAN</h3>
+            <p class="tier-desc">The absolute peak fitness model. Comprehensive bespoke health suite.</p>
+            <div class="price-val">
+              <span class="amount" id="vip-price">$99</span>
+              <span class="period" id="vip-period">/ month</span>
+            </div>
+            <ul class="price-features">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                All Elite Athlete Tier Privileges
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Weekly 1-on-1 Coach Personal Checkin
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Private Premium Recovery Room & Spa
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Bespoke Sports Nutrition Planning
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Unlimited guest passes
+              </li>
+            </ul>
+            <button class="btn btn-outline purchase-membership-btn" data-tier="VIP">Select VIP</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         MEMBER DASHBOARD SECTION (RESTRICTED)
+         ========================================================================= -->
+    <section id="dashboard-view" class="section-padding page-section" style="display: none;">
+      <div class="container">
+        
+        <div class="dashboard-layout">
+          <!-- Sidebar -->
+          <div class="dashboard-sidebar">
+            <div class="profile-card">
+              <div class="avatar-wrapper">
+                <div class="profile-avatar" id="db-avatar">M</div>
+              </div>
+              <h3 id="db-username" style="font-size: 1.25rem;">Member</h3>
+              <p id="db-email" style="font-size: 0.85rem; color: var(--text-secondary); word-break: break-all;">member@optimus.com</p>
+              <div class="profile-tier" id="db-membership-badge">None</div>
+            </div>
+
+            <ul class="dashboard-menu">
+              <li>
+                <button class="db-menu-btn active" data-tab="overview">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/>
+                  </svg>
+                  Overview
+                </button>
+              </li>
+              <li>
+                <button class="db-menu-btn" data-tab="trackers">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                  </svg>
+                  Workout Tracker
+                </button>
+              </li>
+              <li>
+                <button class="db-menu-btn" data-tab="training">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6.5 9.5h11M6.5 14.5h11M3 7h3v10H3zm15 0h3v10h-3zM9 5h6v14H9z" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Daily Roster
+                </button>
+              </li>
+              <li>
+                <button class="db-menu-btn" data-tab="somatic-diet">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  My Diet Plan
+                </button>
+              </li>
+              <li>
+                <button class="db-menu-btn" data-tab="profile-settings">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                  </svg>
+                  Bio-Profile
+                </button>
+              </li>
+              <li>
+                <button class="db-menu-btn" data-tab="pass">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="4"/><line x1="8" y1="2" x2="8" y2="4"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Gym QR Pass
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Main Panel Content -->
+          <div class="dashboard-content">
+            
+            <!-- OVERVIEW SUB-PANEL -->
+            <div id="overview-tab" class="db-panel active">
+              <div class="panel-header">
+                <h2>Welcome back, <span id="db-member-name">Athlete</span></h2>
+                <p>Track your reservations, recent biometrics, and schedule your fitness calendar.</p>
+              </div>
+
+              <!-- Dynamic Bio Metrics HUD Caps -->
+              <div class="db-hud-metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin-top: 1.5rem; margin-bottom: 2rem;">
+                <div class="db-hud-cap" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 0.75rem 1rem; border-radius: 8px; text-align: center;">
+                  <span class="hud-cap-title" style="display: block; font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">Biological Shape</span>
+                  <strong class="hud-cap-val" id="hud-val-shape" style="color: var(--accent-gold); font-size: 1.1rem; font-weight: 800; text-transform: capitalize;">Mesomorph</strong>
+                </div>
+                <div class="db-hud-cap" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 0.75rem 1rem; border-radius: 8px; text-align: center;">
+                  <span class="hud-cap-title" style="display: block; font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">Registered Age</span>
+                  <strong class="hud-cap-val" id="hud-val-age" style="color: #fff; font-size: 1.1rem; font-weight: 800;">25 yrs</strong>
+                </div>
+                <div class="db-hud-cap" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 0.75rem 1rem; border-radius: 8px; text-align: center;">
+                  <span class="hud-cap-title" style="display: block; font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">Weight Parameter</span>
+                  <strong class="hud-cap-val" id="hud-val-weight" style="color: #fff; font-size: 1.1rem; font-weight: 800;">76 kg</strong>
+                </div>
+                <div class="db-hud-cap" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 0.75rem 1rem; border-radius: 8px; text-align: center;">
+                  <span class="hud-cap-title" style="display: block; font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">Height Metric</span>
+                  <strong class="hud-cap-val" id="hud-val-height" style="color: #fff; font-size: 1.1rem; font-weight: 800;">178 cm</strong>
+                </div>
+                <div class="db-hud-cap" style="background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); padding: 0.75rem 1rem; border-radius: 8px; text-align: center;">
+                  <span class="hud-cap-title" style="display: block; font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; margin-bottom: 0.25rem;">Active Target</span>
+                  <strong class="hud-cap-val" id="hud-val-goal" style="color: var(--success); font-size: 1.1rem; font-weight: 800; text-transform: capitalize;">Maintenance</strong>
+                </div>
+              </div>
+
+              <div class="stats-summary-grid">
+                <div class="stat-card">
+                  <div class="stat-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div class="stat-card-info">
+                    <h4>Booked Classes</h4>
+                    <p id="stat-booked-count">0</p>
+                  </div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  </div>
+                  <div class="stat-card-info">
+                    <h4>Weight (Latest)</h4>
+                    <p id="stat-weight-val">-- kg</p>
+                  </div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <div class="stat-card-info">
+                    <h4>Log Counts</h4>
+                    <p id="stat-log-count">0</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="db-grid-split">
+                <!-- Class Bookings -->
+                <div class="db-card-block">
+                  <h3>Your Upcoming Classes</h3>
+                  <div class="db-table-wrapper">
+                    <table class="db-table">
+                      <thead>
+                        <tr>
+                          <th>Class</th>
+                          <th>Schedule</th>
+                          <th>Instructor</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="db-bookings-list">
+                        <tr>
+                          <td colspan="4" style="text-align: center; color: var(--text-secondary);">No classes booked yet. Find elite training programs under <a href="#classes" style="color: var(--accent-gold); text-decoration: underline;">Classes</a>.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Weight progress spark chart -->
+                <div class="db-card-block">
+                  <h3>Weight Progress (Graph)</h3>
+                  <div class="chart-container" id="progress-chart-block">
+                    <!-- Dynamic SVG chart render -->
+                    <div style="width:100%; text-align:center; padding-top: 5rem; color: var(--text-secondary);" id="no-chart-msg">Log weights under the Workout Tracker tab to populate analytics.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dynamic Achievements Badges Block -->
+              <div class="db-card-block" style="margin-top: 2rem;">
+                <h3>Optimus Bespoke Fitness Achievements</h3>
+                <div class="achievements-caps-grid" id="db-achievements-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 1.25rem;">
+                  <!-- Dynamically populated achievements cards by JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- WORKOUT TRACKERS SUB-PANEL -->
+            <div id="trackers-tab" class="db-panel">
+              <div class="panel-header">
+                <h2>Workout Logger & Analytics</h2>
+                <p>Log your daily body weights, cardiovascular work, and biological stats to monitor adjustments.</p>
+              </div>
+
+              <div class="db-grid-split">
+                <!-- Logger Form -->
+                <div class="db-card-block">
+                  <h3>Log Weight & Workout</h3>
+                  <form id="progress-logger-form">
+                    <div class="form-group">
+                      <label for="log-date">Workout Date</label>
+                      <input type="date" id="log-date" class="form-control" required>
+                    </div>
+                    <div class="form-group-row">
+                      <div class="form-group">
+                        <label for="log-weight">Weight (kg)</label>
+                        <input type="number" step="0.1" id="log-weight" class="form-control" placeholder="e.g. 78.5" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="log-bodyfat">Body Fat % (Optional)</label>
+                        <input type="number" step="0.1" id="log-bodyfat" class="form-control" placeholder="e.g. 14.2">
+                      </div>
+                    </div>
+                    <div class="form-group-row">
+                      <div class="form-group">
+                        <label for="log-duration">Duration (mins)</label>
+                        <input type="number" id="log-duration" class="form-control" placeholder="e.g. 45" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="log-heartrate">Avg Heart Rate (bpm)</label>
+                        <input type="number" id="log-heartrate" class="form-control" placeholder="e.g. 138">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Log Progress Metrics</button>
+                  </form>
+                </div>
+
+                <!-- Logger History -->
+                <div class="db-card-block">
+                  <h3>Recent Metrics History</h3>
+                  <div class="db-table-wrapper" style="max-height: 350px; overflow-y: auto;">
+                    <table class="db-table">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Weight</th>
+                          <th>FAT %</th>
+                          <th>Mins</th>
+                        </tr>
+                      </thead>
+                      <tbody id="db-history-list">
+                        <tr>
+                          <td colspan="4" style="text-align: center; color: var(--text-secondary);">No physical logs inputted.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GYM PASS SUB-PANEL -->
+            <div id="pass-tab" class="db-panel">
+              <div class="panel-header">
+                <h2>Optimus Contactless QR Entry Pass</h2>
+                <p>Present this premium glowing QR code at any Optimus Gym access pod to open contactless entry gates.</p>
+              </div>
+
+              <div class="qr-pass-wrapper">
+                <div class="qr-details">
+                  <div style="background-color: var(--accent-gold); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 3px; font-weight: 800; font-size: 0.7rem; width: fit-content; margin-bottom: 1rem; text-transform: uppercase;">Verified Member Pass</div>
+                  <h3 id="pass-user-name">Member Name</h3>
+                  <p style="margin-bottom: 0.5rem;">Access Authorization: <strong id="pass-auth-status" style="color: var(--success);">ACTIVE</strong></p>
+                  <p>Membership Level: <strong id="pass-membership-tier" style="color: var(--accent-gold);">None</strong></p>
+                  <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">Gate Pod scanner requires screen brightness above 50% for high-speed scanning.</p>
+                </div>
+                
+                <div class="qr-pass-code">
+                  <!-- Handcrafted inline SVG mimicking QR code blocks to make it look premium and real! -->
+                  <svg class="qr-canvas" id="qr-svg" viewBox="0 0 100 100" fill="currentColor">
+                    <!-- Standard aesthetic QR outer corners -->
+                    <!-- Top Left Outer Ring -->
+                    <rect x="5" y="5" width="25" height="25" fill="#111" />
+                    <rect x="8" y="8" width="19" height="19" fill="#fff" />
+                    <rect x="11" y="11" width="13" height="13" fill="#111" />
+                    <!-- Top Right Outer Ring -->
+                    <rect x="70" y="5" width="25" height="25" fill="#111" />
+                    <rect x="73" y="8" width="19" height="19" fill="#fff" />
+                    <rect x="76" y="11" width="13" height="13" fill="#111" />
+                    <!-- Bottom Left Outer Ring -->
+                    <rect x="5" y="70" width="25" height="25" fill="#111" />
+                    <rect x="8" y="73" width="19" height="19" fill="#fff" />
+                    <rect x="11" y="76" width="13" height="13" fill="#111" />
+                    
+                    <!-- Scattered random premium QR data points -->
+                    <rect x="35" y="5" width="5" height="10" fill="#111" />
+                    <rect x="45" y="10" width="15" height="5" fill="#111" />
+                    <rect x="35" y="20" width="10" height="5" fill="#111" />
+                    <rect x="50" y="20" width="5" height="15" fill="#111" />
+                    <rect x="60" y="15" width="5" height="5" fill="#111" />
+                    
+                    <rect x="5" y="35" width="10" height="5" fill="#111" />
+                    <rect x="20" y="35" width="5" height="15" fill="#111" />
+                    <rect x="15" y="45" width="15" height="5" fill="#111" />
+                    <rect x="5" y="55" width="5" height="10" fill="#111" />
+                    
+                    <rect x="35" y="40" width="30" height="5" fill="#111" />
+                    <rect x="40" y="45" width="5" height="10" fill="#111" />
+                    <rect x="55" y="45" width="10" height="15" fill="#111" />
+                    <rect x="35" y="60" width="15" height="5" fill="#111" />
+                    <rect x="45" y="65" width="5" height="15" fill="#111" />
+                    
+                    <rect x="80" y="35" width="15" height="5" fill="#111" />
+                    <rect x="70" y="45" width="5" height="10" fill="#111" />
+                    <rect x="80" y="50" width="10" height="5" fill="#111" />
+                    <rect x="90" y="55" width="5" height="20" fill="#111" />
+                    <rect x="75" y="65" width="10" height="5" fill="#111" />
+                    
+                    <rect x="35" y="80" width="20" height="5" fill="#111" />
+                    <rect x="40" y="85" width="5" height="10" fill="#111" />
+                    <rect x="50" y="90" width="15" height="5" fill="#111" />
+                    <rect x="60" y="75" width="5" height="10" fill="#111" />
+                    <rect x="60" y="88" width="15" height="5" fill="#111" />
+                    
+                    <rect x="80" y="80" width="10" height="10" fill="#111" />
+                    <rect x="83" y="83" width="4" height="4" fill="#fff" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- DAILY TRAINING ROSTER SUB-PANEL -->
+            <div id="training-tab" class="db-panel">
+              <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+                <div>
+                  <h2>Today's Dynamic Training Roster</h2>
+                  <p>Check off your target muscular movements and dynamic conditioning pods.</p>
+                </div>
+                <!-- Dynamic progress circular capsule -->
+                <div class="progress-ring-wrapper" style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 30px;">
+                  <span style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 700;">Daily Progress</span>
+                  <div style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 900; color: var(--success);" id="roster-progress-percent">0%</div>
+                </div>
+              </div>
+
+              <!-- Exercise checklist deck -->
+              <div class="db-card-block" style="padding: 2rem;">
+                <h3 id="roster-type-title">Target Loading Exercises</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;" id="roster-checklist-container">
+                  <!-- Loaded dynamically by JS depending on somatic goal and body shape -->
+                </div>
+              </div>
+            </div>
+
+            <!-- MY PERSONAL DIET PLAN SUB-PANEL -->
+            <div id="somatic-diet-tab" class="db-panel">
+              <div class="panel-header" style="margin-bottom: 2rem;">
+                <h2>My Somatotype Diet Plan</h2>
+                <p>Your custom metabolic partitioning blueprint, automatically synchronized from your profile details.</p>
+              </div>
+
+              <div class="diet-results-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; align-items: start;">
+                <!-- Left: Meal plan -->
+                <div>
+                  <h3 style="font-size: 1.35rem; text-transform: uppercase; margin-bottom: 1.25rem; color: #fff;">Meal Blueprints</h3>
+                  <div class="diet-meals-timeline" id="db-diet-meals-container" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    <!-- Loaded dynamically -->
+                  </div>
+                </div>
+
+                <!-- Right: Macros & Foods -->
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                  <div>
+                    <h4 style="font-size: 1.1rem; text-transform: uppercase; color: #fff; margin-bottom: 0.75rem;">Macronutrient Partition</h4>
+                    <div style="display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: #222; margin-bottom: 1rem;">
+                      <div id="db-diet-bar-protein" style="width: 30%; background-color: var(--accent-gold); transition: var(--transition-smooth);"></div>
+                      <div id="db-diet-bar-carbs" style="width: 40%; background-color: var(--success); transition: var(--transition-smooth);"></div>
+                      <div id="db-diet-bar-fats" style="width: 30%; background-color: var(--error); transition: var(--transition-smooth);"></div>
+                    </div>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+                      <li style="display:flex; justify-content: space-between;"><span>Protein target:</span> <strong id="db-diet-val-protein" style="color: var(--accent-gold);">30%</strong></li>
+                      <li style="display:flex; justify-content: space-between;"><span>Carbohydrate target:</span> <strong id="db-diet-val-carbs" style="color: var(--success);">40%</strong></li>
+                      <li style="display:flex; justify-content: space-between;"><span>Fats target:</span> <strong id="db-diet-val-fats" style="color: var(--error);">30%</strong></li>
+                    </ul>
+                  </div>
+
+                  <div style="border-top: 1px dashed var(--border-color); padding-top: 1.25rem;">
+                    <h4 style="font-size: 1.1rem; text-transform: uppercase; color: #fff; margin-bottom: 0.75rem;">Recommended Somatic Fuels</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;" id="db-diet-fuels-container">
+                      <!-- Loaded dynamically -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BIO-PROFILE SETTINGS EDITOR SUB-PANEL -->
+            <div id="profile-settings-tab" class="db-panel">
+              <div class="panel-header" style="margin-bottom: 2rem;">
+                <h2>Bio-Profile & Biometrics Editor</h2>
+                <p>Keep your biological statistics updated. Saving your stats instantly synchronizes TDEE, Tiers, and Somatotype diet targets.</p>
+              </div>
+
+              <div class="db-card-block" style="padding: 2.5rem; max-width: 700px; margin: 0 auto;">
+                <form id="db-profile-editor-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                  <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px;">
+                      <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Biological Gender</label>
+                      <select id="profile-gender" class="form-control" style="width: 100%;" required>
+                        <option value="male">Male (Harris-Benedict Constant)</option>
+                        <option value="female">Female (Harris-Benedict Constant)</option>
+                      </select>
+                    </div>
+                    <div style="flex: 1; min-width: 200px;">
+                      <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Registered Age (years)</label>
+                      <input type="number" id="profile-age" class="form-control" style="width: 100%;" required>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px;">
+                      <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Height Specification (cm)</label>
+                      <input type="number" id="profile-height" class="form-control" style="width: 100%;" required>
+                    </div>
+                    <div style="flex: 1; min-width: 200px;">
+                      <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Current Weight (kg)</label>
+                      <input type="number" step="0.1" id="profile-weight" class="form-control" style="width: 100%;" required>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px;">
+                      <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Somatic Body Shape</label>
+                      <select id="profile-shape" class="form-control" style="width: 100%;" required>
+                        <option value="ectomorph">Ectomorph (Slender / High metabolic)</option>
+                        <option value="mesomorph">Mesomorph (Symmetric / Athletic gain)</option>
+                        <option value="endomorph">Endomorph (Heavy-Set / Power focused)</option>
+                      </select>
+                    </div>
+                    <div style="flex: 1; min-width: 200px;">
+                      <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Active Fitness Target</label>
+                      <select id="profile-goal" class="form-control" style="width: 100%;" required>
+                        <option value="deficit">Accelerated Fat Loss (-500 kcal deficit)</option>
+                        <option value="maintenance">Isometric Maintenance (0 kcal modification)</option>
+                        <option value="surplus">Muscular Hypertrophy (+400 kcal surplus)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem; justify-content: center;">Save Bio Profile Settings</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ADMINISTRATOR DASHBOARD SECTION
+         ========================================================================= -->
+    <section id="admin-view" class="section-padding page-section" style="display: none;">
+      <div class="container">
+        
+        <div class="panel-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; margin-bottom: 2.5rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <h2>Optimus Administration Console</h2>
+            <span class="admin-badge">Admin Access Only</span>
+          </div>
+          <p>Oversee total user registrations, class utilization capacities, add new athletic training programs, and inspect revenue demographics.</p>
+        </div>
+
+        <div class="stats-summary-grid">
+          <div class="stat-card">
+            <div class="stat-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="stat-card-info">
+              <h4>Total Gym Members</h4>
+              <p id="admin-stat-members">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="stat-card-info">
+              <h4>Active Memberships</h4>
+              <p id="admin-stat-active">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="stat-card-info">
+              <h4>Active Classes</h4>
+              <p id="admin-stat-classes">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="stat-card-info">
+              <h4>Total Bookings</h4>
+              <p id="admin-stat-bookings">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="db-grid-split">
+          <!-- Class addition form -->
+          <div class="db-card-block">
+            <h3>Add New Athletic Class Program</h3>
+            <form id="admin-add-class-form">
+              <div class="form-group">
+                <label for="class-title">Program Title</label>
+                <input type="text" id="class-title" class="form-control" placeholder="e.g. Olympic Weightlifting" required>
+              </div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="class-trainer">Master Instructor</label>
+                  <input type="text" id="class-trainer" class="form-control" placeholder="e.g. Marcus Steel" required>
+                </div>
+                <div class="form-group">
+                  <label for="class-schedule">Weekly Schedule Time</label>
+                  <input type="text" id="class-schedule" class="form-control" placeholder="e.g. Mon, Wed - 8:00 AM" required>
+                </div>
+              </div>
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="class-duration">Class Duration</label>
+                  <input type="text" id="class-duration" class="form-control" placeholder="e.g. 60 mins" required>
+                </div>
+                <div class="form-group">
+                  <label for="class-capacity">Roster Capacity (Seats)</label>
+                  <input type="number" id="class-capacity" class="form-control" placeholder="e.g. 15" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="class-intensity">Aerobic Intensity Level</label>
+                <select id="class-intensity" class="form-control" required>
+                  <option value="High">High (High-intensity conditioning, heavy loads)</option>
+                  <option value="Medium">Medium (General power training, active agility)</option>
+                  <option value="Low">Low (Mindful yoga, restoration stretching)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="class-desc">Program Biomechanical Description</label>
+                <textarea id="class-desc" class="form-control" rows="3" placeholder="Explain the focus, objectives, and equipment utilized..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Create Class Program</button>
+            </form>
+          </div>
+
+          <!-- Roster List -->
+          <div class="db-card-block">
+            <h3>Registered Gym Member Roster</h3>
+            <div class="db-table-wrapper admin-members-list">
+              <table class="db-table">
+                <thead>
+                  <tr>
+                    <th>Member</th>
+                    <th>Email</th>
+                    <th>Membership</th>
+                    <th>Joined</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-roster-list">
+                  <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-secondary);">No registered gym members yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ELITE TRAINERS SECTION
+         ========================================================================= -->
+    <section id="trainers-view" class="section-padding page-section" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Elite Athletic Roster</h2>
+          <p>Train under world-class certified professionals dedicated to mechanical performance, injury reduction, and physical expansion.</p>
+        </div>
+
+        <div class="trainers-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem;">
+          <!-- Trainer 1 -->
+          <div class="trainer-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+            <div class="trainer-graphic" style="height: 220px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(20, 20, 26, 0.8) 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="1" style="filter: drop-shadow(0 0 8px var(--accent-gold-glow));">
+                <path d="M6.5 9.5h11M6.5 14.5h11M3 7h3v10H3zm15 0h3v10h-3zM9 5h6v14H9z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div style="position: absolute; bottom: -15px; left: 20px; background: var(--accent-gold); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Master Coach</div>
+            </div>
+            <div style="padding: 2.25rem 1.75rem 1.75rem 1.75rem; display: flex; flex-direction: column; flex-grow: 1;">
+              <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.25rem;">Marcus Steel</h3>
+              <p style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em;">Olympic Power & Biomechanics</p>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; flex-grow: 1;">"Strength is not simply load moving through space; it is neuromuscular coordination, absolute structural stability, and mental dominance."</p>
+              <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">CSCS *D</span>
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">USAW-2</span>
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">12+ Yrs Exp</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trainer 2 -->
+          <div class="trainer-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+            <div class="trainer-graphic" style="height: 220px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(20, 20, 26, 0.8) 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1" style="filter: drop-shadow(0 0 8px var(--success-glow));">
+                <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 8c-2 2-2 5 0 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div style="position: absolute; bottom: -15px; left: 20px; background: var(--success); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Yoga Director</div>
+            </div>
+            <div style="padding: 2.25rem 1.75rem 1.75rem 1.75rem; display: flex; flex-direction: column; flex-grow: 1;">
+              <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.25rem;">Elena Rose</h3>
+              <p style="font-size: 0.85rem; color: var(--success); font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em;">Mindfulness, Vinyasa & Breathwork</p>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; flex-grow: 1;">"Aligning mechanical movement with proper biological respiration releases hidden physical reserves and restores deep muscular pathways."</p>
+              <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">RYT-500</span>
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">Therapeutic Yoga</span>
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">8+ Yrs Exp</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trainer 3 -->
+          <div class="trainer-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+            <div class="trainer-graphic" style="height: 220px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(20, 20, 26, 0.8) 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="1" style="filter: drop-shadow(0 0 8px var(--error-glow));">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div style="position: absolute; bottom: -15px; left: 20px; background: var(--error); color: var(--text-primary); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">HIIT Specialist</div>
+            </div>
+            <div style="padding: 2.25rem 1.75rem 1.75rem 1.75rem; display: flex; flex-direction: column; flex-grow: 1;">
+              <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.25rem;">Jackson Jax</h3>
+              <p style="font-size: 0.85rem; color: var(--error); font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em;">Metabolic & Cardiovascular Conditioning</p>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; flex-grow: 1;">"If it does not push your cardiorespiratory margins, it will not trigger the adaptive biology needed for accelerated fat loss."</p>
+              <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">FMS Level 2</span>
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">NASM-PES</span>
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">6+ Yrs Exp</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trainer 4 -->
+          <div class="trainer-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-spring); position: relative; display: flex; flex-direction: column;">
+            <div class="trainer-graphic" style="height: 220px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(20, 20, 26, 0.8) 100%); display: flex; align-items: center; justify-content: center; position: relative;">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="1" style="filter: drop-shadow(0 0 8px var(--accent-gold-glow));">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div style="position: absolute; bottom: -15px; left: 20px; background: var(--accent-gold); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 30px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Conditioning Coach</div>
+            </div>
+            <div style="padding: 2.25rem 1.75rem 1.75rem 1.75rem; display: flex; flex-direction: column; flex-grow: 1;">
+              <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.25rem;">Coach Sarah</h3>
+              <p style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em;">Hybrid Athleticism & Speed</p>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; flex-grow: 1;">"Bespoke athletic preparation is the bridge between average recovery timelines and ultimate operational speed."</p>
+              <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">EXOS Performance</span>
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">PES Certified</span>
+                <span style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-secondary); padding: 0.2rem 0.5rem; border-radius: 4px;">10+ Yrs Exp</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- =========================================================================
+         BIOMETRIC CALCULATOR SECTION
+         ========================================================================= -->
+    <section id="calculator-view" class="section-padding page-section" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Biometric Math Suite</h2>
+          <p>Audit your base biological metabolic parameters. Dynamic formulas immediately calculate daily caloric thresholds and customizable macronutrient targets.</p>
+        </div>
+
+        <div class="calc-grid-wrapper" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; margin-top: 3rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 3rem 2rem; box-shadow: 0 15px 30px rgba(0,0,0,0.5);">
+          <!-- Calculator Form -->
+          <div>
+            <h3 style="font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1.5rem; color: #fff;">Audit Input Panel</h3>
+            <form id="bio-calculator-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+              <div style="display: flex; gap: 1rem;">
+                <div style="flex: 1;">
+                  <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Biological Gender</label>
+                  <select id="calc-gender" class="form-control" style="width: 100%;" required>
+                    <option value="male">Male (Harris-Benedict Accent)</option>
+                    <option value="female">Female (Harris-Benedict Accent)</option>
+                  </select>
+                </div>
+                <div style="flex: 1;">
+                  <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Age (years)</label>
+                  <input type="number" id="calc-age" class="form-control" value="26" style="width: 100%;" required>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 1rem;">
+                <div style="flex: 1;">
+                  <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Height (cm)</label>
+                  <input type="number" id="calc-height" class="form-control" value="178" style="width: 100%;" required>
+                </div>
+                <div style="flex: 1;">
+                  <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Weight (kg)</label>
+                  <input type="number" id="calc-weight" class="form-control" value="76" style="width: 100%;" required>
+                </div>
+              </div>
+
+              <div>
+                <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Daily Activity Level</label>
+                <select id="calc-activity" class="form-control" style="width: 100%;" required>
+                  <option value="1.2">Sedentary (General Desk Work / No Training)</option>
+                  <option value="1.375">Lightly Active (1-3 sessions per week)</option>
+                  <option value="1.55" selected>Moderately Active (3-5 intense sessions per week)</option>
+                  <option value="1.725">Very Active (6-7 elite double sessions per week)</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Fitness Target</label>
+                <select id="calc-goal" class="form-control" style="width: 100%;" required>
+                  <option value="deficit">Accelerated Fat Loss (-500 kcal deficit)</option>
+                  <option value="maintenance" selected>Isometric Maintenance (0 kcal modification)</option>
+                  <option value="surplus">Muscular Hypertrophy (+400 kcal surplus)</option>
+                </select>
+              </div>
+            </form>
+          </div>
+
+          <!-- Calculator Results Screen -->
+          <div style="border-left: 1px solid var(--border-color); padding-left: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.5rem; text-transform: uppercase; margin-bottom: 1.5rem; color: #fff;">Audit Calculations</h3>
+              
+              <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Body Mass Index (BMI)</span>
+                  <div style="display: flex; align-items: baseline; gap: 0.5rem; margin-top: 0.25rem;">
+                    <span id="calc-result-bmi" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 900; color: #fff;">24.0</span>
+                    <span id="calc-result-bmi-status" style="font-size: 0.8rem; color: var(--success); font-weight: 700;">Normal</span>
+                  </div>
+                </div>
+
+                <div>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Basal Metabolic Rate (BMR)</span>
+                  <div style="margin-top: 0.25rem;">
+                    <span id="calc-result-bmr" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 900; color: #fff;">1,750</span>
+                    <span style="font-size: 0.95rem; color: var(--text-secondary);">kcal/day</span>
+                  </div>
+                </div>
+
+                <div>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Target Daily Budget (TDEE)</span>
+                  <div style="margin-top: 0.25rem; background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245,158,11,0.2); padding: 0.75rem 1.25rem; border-radius: 8px; width: fit-content;">
+                    <span id="calc-result-tdee" style="font-family: var(--font-heading); font-size: 2.6rem; font-weight: 900; color: var(--accent-gold); text-shadow: 0 0 15px var(--accent-gold-glow);">2,710</span>
+                    <span style="font-size: 0.95rem; color: var(--accent-gold); font-weight: 700;">kcal/day</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Macros Split Bar -->
+            <div style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+              <h4 style="font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.75rem; color: #fff;">Macronutrient Targets</h4>
+              
+              <!-- Stacked visual progress bar -->
+              <div style="display: flex; height: 16px; border-radius: 8px; overflow: hidden; background: #222; margin-bottom: 1rem;">
+                <div id="macro-bar-protein" style="width: 30%; background-color: var(--accent-gold); transition: var(--transition-smooth);" title="Protein"></div>
+                <div id="macro-bar-carbs" style="width: 45%; background-color: var(--success); transition: var(--transition-smooth);" title="Carbs"></div>
+                <div id="macro-bar-fats" style="width: 25%; background-color: var(--error); transition: var(--transition-smooth);" title="Fats"></div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.25rem;">
+                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent-gold);"></span>
+                  <span>Protein: <strong id="macro-gram-protein" style="color: #fff;">203g</strong></span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.25rem;">
+                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: var(--success);"></span>
+                  <span>Carbs: <strong id="macro-gram-carbs" style="color: #fff;">305g</strong></span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.25rem;">
+                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: var(--error);"></span>
+                  <span>Fats: <strong id="macro-gram-fats" style="color: #fff;">75g</strong></span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         BODY SHAPE DIET ARCHITECT SECTION
+         ========================================================================= -->
+    <section id="diet-view" class="section-padding page-section" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Body Shape Diet Architect</h2>
+          <p>Align your biological somatotype with precise nutritional blueprints. Select your body shape to unlock specialized calorie profiles, custom macronutrient ratios, and a detailed meal schedule.</p>
+        </div>
+
+        <!-- Somatotype / Body Shape Selector Cards -->
+        <div class="diet-shapes-selector" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; margin-bottom: 3.5rem;">
+          <!-- Ectomorph Card -->
+          <div class="diet-shape-card" id="shape-ectomorph" data-shape="ectomorph">
+            <div class="shape-icon-wrapper">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2v20M8 5h8M9 9h6M10 13h4M8 19h8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Ectomorph</h3>
+            <span class="shape-alias">Lean & High-Metabolic</span>
+            <p>Naturally slender with narrow structural build and extremely fast basal metabolism. Requires high-carbohydrate caloric loading to optimize muscle mass retention.</p>
+            <div class="shape-badge">Fast Carb Tol</div>
+          </div>
+
+          <!-- Mesomorph Card -->
+          <div class="diet-shape-card active" id="shape-mesomorph" data-shape="mesomorph">
+            <div class="shape-icon-wrapper">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 3h12l3 6-9 12L3 9z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Mesomorph</h3>
+            <span class="shape-alias">Symmetric & Athletic</span>
+            <p>Genetically predisposed to rapid hypertrophic muscle gains and low adipose storage. Demands balanced macronutrient splits for athletic power and recovery.</p>
+            <div class="shape-badge">Optimal Balance</div>
+          </div>
+
+          <!-- Endomorph Card -->
+          <div class="diet-shape-card" id="shape-endomorph" data-shape="endomorph">
+            <div class="shape-icon-wrapper">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="5" y="3" width="14" height="18" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="17" x2="15" y2="17"/>
+              </svg>
+            </div>
+            <h3>Endomorph</h3>
+            <span class="shape-alias">Heavy-Set & Powerhouse</span>
+            <p>Sturdier bone structures with slow metabolic output and high fat retention potential. Requires protein-rich carbohydrate partitioning to drive lipolysis.</p>
+            <div class="shape-badge">Ketogenic Lean-Out</div>
+          </div>
+        </div>
+
+        <!-- Diet Calculations & Food Deck Block -->
+        <div class="diet-results-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: start; margin-bottom: 4rem;">
+          <!-- Left: Dynamic Meal Plan timeline -->
+          <div>
+            <h3 style="font-size: 1.6rem; text-transform: uppercase; margin-bottom: 1.5rem; color: #fff; display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-heading);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              Somatic Daily Meal Blueprint
+            </h3>
+            
+            <div class="diet-meals-timeline" id="diet-meals-container" style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <!-- Loaded dynamically by JS -->
+            </div>
+          </div>
+
+          <!-- Right: Dynamic Split & Recommended Foods -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem; box-shadow: 0 15px 30px rgba(0,0,0,0.5);">
+            <div>
+              <h3 style="font-size: 1.25rem; text-transform: uppercase; margin-bottom: 0.25rem; color: #fff;">Calorie & Macro Ratio</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Tailored nutrient partition ratio optimized for this physical shape.</p>
+              
+              <!-- Integration Alert Badge -->
+              <div id="diet-integration-alert" style="background: rgba(245, 158, 11, 0.05); border: 1px dashed rgba(245,158,11,0.25); padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.8rem; color: var(--accent-gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                </svg>
+                <span id="diet-integration-text">Using somatotype default baseline. Calculate biometrics for personalized grams!</span>
+              </div>
+
+              <!-- Macros Split Visual Bar -->
+              <div style="display: flex; height: 16px; border-radius: 8px; overflow: hidden; background: #222; margin-bottom: 1rem;" id="diet-macro-bars-wrapper">
+                <div id="diet-bar-protein" style="width: 30%; background-color: var(--accent-gold); transition: var(--transition-smooth);"></div>
+                <div id="diet-bar-carbs" style="width: 40%; background-color: var(--success); transition: var(--transition-smooth);"></div>
+                <div id="diet-bar-fats" style="width: 30%; background-color: var(--error); transition: var(--transition-smooth);"></div>
+              </div>
+
+              <!-- Macros Labels Grid -->
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center; font-size: 0.8rem;">
+                <div style="background: rgba(245, 158, 11, 0.05); padding: 0.5rem 0.25rem; border-radius: 6px; border: 1px solid rgba(245, 158, 11, 0.1);">
+                  <span style="color: var(--accent-gold); font-weight: 700; display: block;">Protein</span>
+                  <strong id="diet-label-protein" style="color: #fff; font-size: 0.95rem;">30%</strong>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.05); padding: 0.5rem 0.25rem; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.1);">
+                  <span style="color: var(--success); font-weight: 700; display: block;">Carbs</span>
+                  <strong id="diet-label-carbs" style="color: #fff; font-size: 0.95rem;">40%</strong>
+                </div>
+                <div style="background: rgba(239, 68, 68, 0.05); padding: 0.5rem 0.25rem; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.1);">
+                  <span style="color: var(--error); font-weight: 700; display: block;">Fats</span>
+                  <strong id="diet-label-fats" style="color: #fff; font-size: 0.95rem;">30%</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scientific Power Foods -->
+            <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+              <h3 style="font-size: 1.25rem; text-transform: uppercase; margin-bottom: 1rem; color: #fff; font-family: var(--font-heading);">Biological Power Fuels</h3>
+              <div style="display: flex; flex-direction: column; gap: 1rem;" id="diet-power-foods-container">
+                <!-- Loaded dynamically by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================================
+         CONTACT & INQUIRY DECK SECTION
+         ========================================================================= -->
+    <section id="contact-view" class="section-padding page-section" style="display: none;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Optimus Operational Desk</h2>
+          <p>Get in touch with an athletic support coordinator, inquire about team memberships, or request coach consultations.</p>
+        </div>
+
+        <div class="contact-grid-wrapper" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; margin-top: 3rem; align-items: start;">
+          <!-- Contact Form Desk -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; box-shadow: 0 15px 30px rgba(0,0,0,0.5);">
+            <h3 style="font-size: 1.4rem; text-transform: uppercase; margin-bottom: 1.5rem; color: #fff;">Inquiry Submission</h3>
+            
+            <form id="contact-inquiry-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+              <div class="contact-form-row" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px;">
+                  <label for="contact-name" style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Athlete Name</label>
+                  <input type="text" id="contact-name" class="form-control" style="width: 100%;" placeholder="e.g. Alex Hunter" required>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                  <label for="contact-email" style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Secure Email</label>
+                  <input type="email" id="contact-email" class="form-control" style="width: 100%;" placeholder="e.g. alex@gmail.com" required>
+                </div>
+              </div>
+
+              <div>
+                <label for="contact-subject" style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Inquiry Focus</label>
+                <select id="contact-subject" class="form-control" style="width: 100%;" required>
+                  <option value="coach">1-on-1 Master Coach Check-In Consultation</option>
+                  <option value="corporate">Optimus Corporate Team Membership Models</option>
+                  <option value="technical">Optimus QR Mobile Pass Pod Technical Issue</option>
+                  <option value="general" selected>General Fitness Facilities & Equipment Question</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="contact-message" style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Detailed Message</label>
+                <textarea id="contact-message" class="form-control" rows="5" style="width: 100%;" placeholder="Explain your physical goals, requests, or questions..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.75rem;">Submit Operational Request</button>
+            </form>
+          </div>
+
+          <!-- Locations Info Panel -->
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <!-- Hours block -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem;">
+              <h3 style="font-size: 1.25rem; text-transform: uppercase; margin-bottom: 1.25rem; color: var(--accent-gold); display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Facility timelines
+              </h3>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.95rem; color: var(--text-secondary);">
+                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.5rem;"><span style="color: #fff; font-weight: 500;">Monday - Friday:</span> <span>05:00 AM - 11:00 PM</span></li>
+                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.5rem;"><span style="color: #fff; font-weight: 500;">Saturday:</span> <span>06:00 AM - 09:00 PM</span></li>
+                <li style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 0.5rem;"><span style="color: #fff; font-weight: 500;">Sunday:</span> <span>08:00 AM - 06:00 PM</span></li>
+                <li style="display: flex; justify-content: space-between; color: var(--accent-gold); font-weight: 700; padding-top: 0.25rem; flex-wrap: wrap;"><span>* Contactless Scanner Pods:</span> <span>Open 24/7 for VIP members</span></li>
+              </ul>
+            </div>
+
+            <!-- Visual coordinates Map Block -->
+            <div class="map-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; position: relative; overflow: hidden; height: 260px; display: flex; flex-direction: column; justify-content: flex-end;">
+              <!-- Handcrafted glow grid mimicking dynamic maps -->
+              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(8,8,10,0.85) 0%, rgba(20,20,26,0.9) 100%); z-index: 2;"></div>
+              
+              <!-- Neon maps shapes -->
+              <div class="neon-dot-1" style="position: absolute; top: 20%; left: 30%; width: 15px; height: 15px; border-radius: 50%; background: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold); z-index: 3;"></div>
+              <div class="neon-dot-2" style="position: absolute; top: 50%; left: 60%; width: 15px; height: 15px; border-radius: 50%; background: var(--success); box-shadow: 0 0 15px var(--success); z-index: 3;"></div>
+              
+              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(245,158,11,0.05) 1px, transparent 0); background-size: 15px 15px; z-index: 1;"></div>
+              
+              <div style="position: relative; z-index: 5;">
+                <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.25rem;">Optimus Biomechanical Facility</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">77 Powerlifting Blvd, Olympic Plaza, NY 10001</p>
+                <p style="font-size: 0.8rem; color: var(--accent-gold); margin-top: 0.5rem;">📍 Core Headquarters & Bio-Zone pod</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-9 10h-2V8h2v8zm5 0h-2V8h2v8zm-10 0H5V8h2v8z"/>
+          </svg>
+          <span>OPTIMUS</span> FIT
+        </a>
+        <p>A highly sophisticated full-stack fitness facility providing physical biometric auditing, master coaching, and professional strength suites.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Facilities</h4>
+        <ul>
+          <li><a href="#home">Strength Room</a></li>
+          <li><a href="#home">Power Barbell Rack</a></li>
+          <li><a href="#home">Cardio Bio-Zone</a></li>
+          <li><a href="#home">Recovery Spa Room</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Fitness Programs</h4>
+        <ul>
+          <li><a href="#classes">CrossFit Conditioning</a></li>
+          <li><a href="#classes">Olympic Lifting</a></li>
+          <li><a href="#classes">Yoga & Breathing Flow</a></li>
+          <li><a href="#classes">High-Intensity Burn</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal & Contact</h4>
+        <ul>
+          <li><a href="#home">support@optimusfit.com</a></li>
+          <li><a href="#home">+1 (555) 019-9881</a></li>
+          <li><a href="#home">Terms of Access</a></li>
+          <li><a href="#home">Privacy Analytics</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Optimus Fitness Inc. Handcrafted in dark athletic glassmorphism.</p>
+      <p>Designed by Antigravity</p>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       AUTHENTICATION MODAL OVERLAY
+       ========================================================================= -->
+  <div id="auth-modal" class="modal-overlay">
+    <!-- Login Card -->
+    <div class="modal-container" id="login-modal-panel">
+      <button class="modal-close" id="close-login-btn">&times;</button>
+      <h2 class="modal-title">Optimus Core</h2>
+      <p class="modal-subtitle">Access your training stats and schedules.</p>
+      
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" class="form-control" placeholder="e.g. alexfit" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Secure Portal Sign-In</button>
+      </form>
+
+      <div class="modal-footer">
+        <p>New to Optimus facility? <a href="#" id="toggle-register-link" class="modal-link">Establish Credentials</a></p>
+      </div>
+    </div>
+
+    <!-- Registration Card -->
+    <div class="modal-container" id="register-modal-panel" style="display: none;">
+      <button class="modal-close" id="close-register-btn">&times;</button>
+      <h2 class="modal-title">Establish Roster</h2>
+      <p class="modal-subtitle">Join the elite training facilities.</p>
+      
+      <form id="register-form">
+        <div class="form-group">
+          <label for="register-username">Choose Username</label>
+          <input type="text" id="register-username" class="form-control" placeholder="e.g. alexfit" required>
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email Address</label>
+          <input type="email" id="register-email" class="form-control" placeholder="e.g. alex@gmail.com" required>
+        </div>
+        <div class="form-group">
+          <label for="register-password">Create Secure Password</label>
+          <input type="password" id="register-password" class="form-control" placeholder="Min. 6 characters" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Establish Credentials</button>
+      </form>
+
+      <div class="modal-footer">
+        <p>Already registered on the roster? <a href="#" id="toggle-login-link" class="modal-link">Sign-In</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       USER PROFILE QUICK-VIEW MODAL OVERLAY (ATHLETIC PASSPORT)
+       ========================================================================= -->
+  <div id="profile-quickview-modal" class="modal-overlay">
+    <div class="modal-container passport-container">
+      <button class="modal-close" id="close-profile-btn">&times;</button>
+      
+      <!-- Passport Header -->
+      <div class="passport-header">
+        <div class="passport-avatar" id="profile-qv-avatar">H</div>
+        <div class="passport-identity">
+          <h2 id="profile-qv-username">Athlete Profile</h2>
+          <span class="profile-tier" id="profile-qv-badge">None</span>
+        </div>
+      </div>
+      
+      <!-- Biometric Details Grid -->
+      <div class="passport-grid">
+        <div class="passport-field">
+          <span>Gender</span>
+          <strong id="profile-qv-gender">--</strong>
+        </div>
+        <div class="passport-field">
+          <span>Age</span>
+          <strong id="profile-qv-age">-- Yrs</strong>
+        </div>
+        <div class="passport-field">
+          <span>Height</span>
+          <strong id="profile-qv-height">-- cm</strong>
+        </div>
+        <div class="passport-field">
+          <span>Weight</span>
+          <strong id="profile-qv-weight">-- kg</strong>
+        </div>
+      </div>
+      
+      <!-- Somatic Nutrition Section -->
+      <div class="passport-section">
+        <h3>Somatic Nutrition Profile</h3>
+        <div class="passport-nutrition-header">
+          <span id="profile-qv-shape">Mesomorph Shape</span>
+          <strong id="profile-qv-tdee">-- kcal</strong>
+        </div>
+        <div class="passport-macro-bar-wrapper">
+          <div id="profile-qv-bar-protein" class="macro-segment protein" style="width: 30%;"></div>
+          <div id="profile-qv-bar-carbs" class="macro-segment carbs" style="width: 40%;"></div>
+          <div id="profile-qv-bar-fats" class="macro-segment fats" style="width: 30%;"></div>
+        </div>
+        <div class="passport-macro-labels">
+          <span class="macro-label-item protein">Protein: <b id="profile-qv-val-protein">30% (--g)</b></span>
+          <span class="macro-label-item carbs">Carbs: <b id="profile-qv-val-carbs">40% (--g)</b></span>
+          <span class="macro-label-item fats">Fats: <b id="profile-qv-val-fats">30% (--g)</b></span>
+        </div>
+      </div>
+      
+      <!-- Passport Actions -->
+      <div class="passport-actions">
+        <button id="profile-qv-dash-btn" class="btn btn-primary" style="width: 100%;">Access Full Dashboard</button>
+        <button id="profile-qv-logout-btn" class="btn btn-outline" style="width: 100%; border-color: var(--error); color: var(--error);">Log Out Session</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- =========================================================================
+       TOAST FEEDBACK MESSAGE
+       ========================================================================= -->
+  <div id="toast" class="toast success">
+    <svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    <span id="toast-message">Task executed successfully!</span>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

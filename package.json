@@ -1,0 +1,21 @@
+{
+  "name": "optimus-fitness",
+  "version": "1.0.0",
+  "description": "Premium Full-Stack Gym Management System for Optimus Fitness",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "author": "Antigravity",
+  "license": "ISC"
+}
