@@ -195,6 +195,10 @@ header.scrolled .nav-container {
   flex-shrink: 0;
 }
 
+.mobile-nav-toggle {
+  display: none;
+}
+
 #nav-user-greeting {
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid rgba(245, 158, 11, 0.25);
@@ -457,7 +461,7 @@ header.scrolled .nav-container {
 
 .classes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -1816,11 +1820,58 @@ footer {
   .hero-stats {
     justify-content: center;
   }
+
+  /* Dashboard Layout Grid Stack & Sidebar */
   .dashboard-layout {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
+  .dashboard-sidebar {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem;
+  }
+  .profile-card {
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+    padding-bottom: 0;
+    padding-right: 1.5rem;
+    margin-bottom: 0;
+  }
+  .dashboard-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  
   .db-grid-split {
     grid-template-columns: 1fr;
+  }
+
+  /* Overrides for inline styling of grids */
+  .calc-grid-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+    padding: 2rem 1.5rem !important;
+  }
+  .calc-grid-wrapper > div:last-child {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid var(--border-color) !important;
+    padding-top: 2rem !important;
+    margin-top: 1rem !important;
+  }
+  
+  .diet-results-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  
+  .contact-grid-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
   }
 }
 
@@ -1828,15 +1879,139 @@ footer {
   header {
     padding: 0;
   }
-  .nav-links {
-    display: none; /* In production a mobile menu would be loaded */
+  
+  /* Hamburger toggle button */
+  .mobile-nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+    z-index: 1001;
   }
+  .mobile-nav-toggle:hover {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px var(--accent-gold-glow);
+  }
+  
+  /* Micro-animated lines within Hamburger SVG */
+  .mobile-nav-toggle svg line {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  .mobile-nav-toggle.active .line-middle {
+    opacity: 0;
+  }
+  .mobile-nav-toggle.active .line-top {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .mobile-nav-toggle.active .line-bottom {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  
+  /* Slide-out mobile drawer */
+  .nav-links {
+    display: flex;
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: rgba(8, 8, 10, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    gap: 1.25rem;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+  }
+  
+  header.scrolled .nav-links {
+    top: 70px;
+    height: calc(100vh - 70px);
+  }
+  
+  .nav-links.active {
+    right: 0;
+  }
+  
+  .nav-links li {
+    width: 100%;
+  }
+  
+  .nav-links a {
+    display: block;
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  }
+  
+  .nav-links a::after {
+    display: none !important;
+  }
+  
+  .nav-links a.active {
+    color: var(--accent-gold);
+  }
+  
+  /* Footer grid stacking */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+  
   .section-header h2 {
     font-size: 2.2rem;
+  }
+  
+  /* Compact dashboard sidebar on tablet */
+  .dashboard-sidebar {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .profile-card {
+    border-right: none;
+    border-bottom: 1px dashed var(--border-color);
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .dashboard-menu {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  .db-menu-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    justify-content: center;
+  }
+  
+  /* Stack standard 2-column input rows */
+  .form-group-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  /* Scale modal overlays to fit compact smartphone widths */
+  .modal-container {
+    padding: 2.25rem 1.5rem !important;
+    width: 92% !important;
+  }
+  .passport-container {
+    padding: 1.75rem 1.25rem !important;
+    width: 92% !important;
+  }
+  
+  /* 2x2 passport bio-data grid */
+  .passport-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
@@ -1864,6 +2039,50 @@ footer {
   .memories-events-grid {
     grid-template-columns: 1fr;
     gap: 5rem; /* Large gap when stacked to prevent columns overlap */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Dynamic vertical stack of inline flex-row events */
+  .event-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    padding: 1.25rem !important;
+  }
+  .event-card .event-date-badge {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hide Member auth text button, collapse into neat profile icon pill */
+  #nav-auth-btn {
+    padding: 0.6rem 0.85rem !important;
+    font-size: 0 !important;
+  }
+  #nav-auth-btn svg {
+    margin: 0 !important;
+  }
+  
+  /* 2-column stacked buttons for dashboard views */
+  .dashboard-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .db-menu-btn {
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    padding: 0.75rem 0.5rem;
+  }
+  .db-menu-btn svg {
+    margin: 0 !important;
+  }
+  
+  .facility-grid {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)) !important;
+    gap: 1.5rem !important;
   }
 }
 

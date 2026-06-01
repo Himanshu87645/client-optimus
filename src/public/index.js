@@ -34,6 +34,8 @@ const elements = {
   navAuthBtn: document.getElementById('nav-auth-btn'),
   navLogoutBtn: document.getElementById('nav-logout-btn'),
   navUserGreeting: document.getElementById('nav-user-greeting'),
+  mobileNavToggle: document.getElementById('mobile-nav-toggle'),
+  navLinks: document.querySelector('.nav-links'),
   
   // SPA Views
   sections: {
@@ -338,6 +340,33 @@ function setupEventListeners() {
       elements.header.classList.remove('scrolled');
     }
   });
+
+  // Mobile Hamburger Toggle
+  if (elements.mobileNavToggle && elements.navLinks) {
+    elements.mobileNavToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      elements.mobileNavToggle.classList.toggle('active');
+      elements.navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on any nav anchor link
+    elements.navAnchorLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        elements.mobileNavToggle.classList.remove('active');
+        elements.navLinks.classList.remove('active');
+      });
+    });
+
+    // Click outside mobile menu dismiss behavior
+    document.addEventListener('click', (e) => {
+      if (elements.navLinks.classList.contains('active')) {
+        if (!elements.navLinks.contains(e.target) && !elements.mobileNavToggle.contains(e.target)) {
+          elements.mobileNavToggle.classList.remove('active');
+          elements.navLinks.classList.remove('active');
+        }
+      }
+    });
+  }
 
   // SPA Hash Routing
   window.addEventListener('hashchange', handleRouting);
